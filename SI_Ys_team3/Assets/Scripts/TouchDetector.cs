@@ -35,6 +35,6 @@ public class TouchDetector : MonoBehaviour {
 
     public void startGame()
     {
-        
+        GameManager.instance.gamestate = GameManager.GameState.playing;
     }
 }

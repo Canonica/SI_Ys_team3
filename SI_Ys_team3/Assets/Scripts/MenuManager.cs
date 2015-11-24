@@ -41,4 +41,10 @@ public class MenuManager : MonoBehaviour {
     {
         Application.LoadLevel("main_menu");
     }
+
+    public void Menu_Pause()
+    {
+        Debug.Log("Pause");
+        GameManager.instance.gamestate = GameManager.GameState.pause;
+    }
 }
