@@ -26,19 +26,15 @@ public class TouchDetector : MonoBehaviour {
 
         if(startCount == 2)
         {
-            Debug.Log("apparition bouton play");
             button_play = Instantiate(button_play, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             button_play.transform.parent = GameObject.Find("Canvas").transform;
             button_play.transform.localScale =  new Vector3(1, 1, 1);            
         }
-
-        
         Destroy(gameobject);
-        
     }
 
     public void startGame()
     {
-        GameManager.instance.gamestate = GameManager.GameState.playing;
+        
     }
 }

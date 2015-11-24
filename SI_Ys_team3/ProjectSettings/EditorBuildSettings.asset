@@ -6,9 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/splashScreen.unity
   - enabled: 1
+=======
+>>>>>>> 6071b6dcdd33fd28d83b4edebbe9bacbba0e1ccd
     path: Assets/Scenes/main_menu.unity
+  - enabled: 1
+    path: Assets/Scenes/mapBis.unity
   - enabled: 1
     path: Assets/Scenes/credits.unity
   - enabled: 1
