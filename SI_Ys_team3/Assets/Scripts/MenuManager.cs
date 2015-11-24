@@ -4,11 +4,7 @@ using System.Collections;
 public class MenuManager : MonoBehaviour {
 
     public static MenuManager instance = null;
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 6071b6dcdd33fd28d83b4edebbe9bacbba0e1ccd
+    
     void Awake()
     {
         instance = this;
