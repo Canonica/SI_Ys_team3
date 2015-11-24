@@ -30,9 +30,9 @@ public class MapManager : MonoBehaviour {
         {
             for(int j =0; j < height; j++)
             {
-                Vector3 position = Camera.main.ViewportToWorldPoint(new Vector3( ((float) i /width)*endPos+startPos, ((float) j /height) * endPos + startPos, 0.0f)) ;
+                /*Vector3 position = Camera.main.ViewportToWorldPoint(new Vector3( ((float) i /width)*endPos+startPos, ((float) j /height) * endPos + startPos, 0.0f)) ;
                 position.z = 0;
-                map[i, j] =  Instantiate(prefab, position, Quaternion.identity) as GameObject;
+                map[i, j] =  Instantiate(prefab, position, Quaternion.identity) as GameObject;*/
             }
         }
 	}
