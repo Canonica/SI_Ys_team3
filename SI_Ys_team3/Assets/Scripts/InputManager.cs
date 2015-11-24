@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour {
 
         if (Input.GetMouseButton(0))
         {
-            Debug.Log("Clic gauche");
+            //Debug.Log("Clic gauche");
         }
 
         if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W))
