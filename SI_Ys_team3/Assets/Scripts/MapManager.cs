@@ -31,16 +31,20 @@ public class MapManager : MonoBehaviour {
 
         GameObject go = GameObject.Find("Cells");
 
-        for(int i = 0; i < width; i++)
+        if(go)
         {
-            for(int j =0; j < height; j++)
+            for(int i = 0; i < width; i++)
             {
-                /*Vector3 position = Camera.main.ViewportToWorldPoint(new Vector3( ((float) i /width)*endPos+startPos, ((float) j /height) * endPos + startPos, 0.0f)) ;
-                position.z = 0;
-                map[i, j] =  Instantiate(prefab, position, Quaternion.identity) as GameObject;*/
-                map.Add(go.transform.GetChild(i * height + j).gameObject);
+                for(int j =0; j < height; j++)
+                {
+                    /*Vector3 position = Camera.main.ViewportToWorldPoint(new Vector3( ((float) i /width)*endPos+startPos, ((float) j /height) * endPos + startPos, 0.0f)) ;
+                    position.z = 0;
+                    map[i, j] =  Instantiate(prefab, position, Quaternion.identity) as GameObject;*/
+                    map.Add(go.transform.GetChild(i * height + j).gameObject);
+                }
             }
         }
+        
 	}
 	
 	// Update is called once per frame
