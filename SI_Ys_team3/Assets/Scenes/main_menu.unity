@@ -422,18 +422,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 361988613}
---- !u!114 &370388256
+--- !u!114 &370388256 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11408506, guid: a5a83689e6fe6e244965c3809389f7fc,
     type: 2}
   m_PrefabInternal: {fileID: 918685831}
-  m_GameObject: {fileID: 1481495654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5da9b6b721af104db25806770130b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &394389341
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,47 +514,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1 &432277452
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 124070, guid: ab2b52835e7058341982b30539e7ab51, type: 2}
-  m_PrefabInternal: {fileID: 1907870286}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 432277454}
-  - 114: {fileID: 432277453}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &432277453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11481014, guid: ab2b52835e7058341982b30539e7ab51,
-    type: 2}
-  m_PrefabInternal: {fileID: 1907870286}
-  m_GameObject: {fileID: 432277452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d086a35fa2177943a7ccbe8b015beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gamestate: 0
---- !u!4 &432277454
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 474406, guid: ab2b52835e7058341982b30539e7ab51, type: 2}
-  m_PrefabInternal: {fileID: 1907870286}
-  m_GameObject: {fileID: 432277452}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.273785919, y: -.0153660346, z: 90}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1 &616098422
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +768,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5a83689e6fe6e244965c3809389f7fc, type: 2}
-  m_RootGameObject: {fileID: 1481495654}
   m_IsPrefabParent: 0
 --- !u!1 &1423388109
 GameObject:
@@ -903,6 +855,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1423388112
@@ -938,34 +901,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1423388109}
---- !u!1 &1481495654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 122984, guid: a5a83689e6fe6e244965c3809389f7fc, type: 2}
-  m_PrefabInternal: {fileID: 918685831}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1481495655}
-  - 114: {fileID: 370388256}
-  m_Layer: 0
-  m_Name: MenuManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1481495655
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 496316, guid: a5a83689e6fe6e244965c3809389f7fc, type: 2}
-  m_PrefabInternal: {fileID: 918685831}
-  m_GameObject: {fileID: 1481495654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.273785919, y: -.0153660346, z: 90}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1 &1624831258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,5 +1076,4 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab2b52835e7058341982b30539e7ab51, type: 2}
-  m_RootGameObject: {fileID: 432277452}
   m_IsPrefabParent: 0

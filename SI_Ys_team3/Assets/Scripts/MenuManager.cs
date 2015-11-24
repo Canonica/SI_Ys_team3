@@ -3,8 +3,17 @@ using System.Collections;
 
 public class MenuManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public static MenuManager instance = null;
+
+
+    void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
         GameManager.instance.gamestate = GameManager.GameState.menu;
     }
 	
