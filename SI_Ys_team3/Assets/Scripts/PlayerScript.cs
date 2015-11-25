@@ -5,7 +5,9 @@ public class PlayerScript : MonoBehaviour {
 
     public int id;
     public int actionPoint = 4;
-    public Color playerColor;
+
+    public int x;
+    public int y;
 
     // Use this for initialization
     void Start () {

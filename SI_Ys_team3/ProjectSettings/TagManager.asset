@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Cell
   - Wall
-  - New Tag
+  - SpawnJ1
+  - SpawnJ2
   layers:
   - Default
   - TransparentFX

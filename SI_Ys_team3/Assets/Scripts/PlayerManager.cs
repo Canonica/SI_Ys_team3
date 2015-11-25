@@ -30,13 +30,14 @@ public class PlayerManager : MonoBehaviour {
     public void addPlayer(PlayerScript player)
     {
         playerList.Add(player);
-        player.playerColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 
-    public void InstanciatePlayer()
+    public void InstanciatePlayer(GameObject spawner)
     {
         GameObject instance = Instantiate(prefab) as GameObject;
         instance.GetComponent<PlayerScript>().SetId(playerList.Count + 1);
+        instance.transform.position = spawner.transform.position;
+        instance.transform.position = new Vector3(0, 0, -2) + instance.transform.position;
         TurnManager.instance.playerIdList.Add(playerList.Count + 1);
     }
 }
