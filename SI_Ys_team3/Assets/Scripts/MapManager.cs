@@ -16,6 +16,8 @@ public class MapManager : MonoBehaviour {
     public int width = 3;
     public int height = 4;
 
+    public float cellSize = 1.5f;
+
     public GameObject prefab;
     public List<GameObject> map;
 
@@ -28,6 +30,8 @@ public class MapManager : MonoBehaviour {
 
         /*float startPos = 0.2f;
         float endPos = 0.8f;*/
+
+        cellSize = GameObject.Find("Grid").transform.lossyScale.x;
 
         GameObject go = GameObject.Find("Cells");
 

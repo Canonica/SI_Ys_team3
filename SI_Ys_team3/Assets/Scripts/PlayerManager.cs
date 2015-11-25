@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour {
 
     public List<PlayerScript> playerList;
 
-    public GameObject prefab;
+    public List<GameObject> prefab;
 
     // Use this for initialization
     void Start () {
@@ -34,7 +34,10 @@ public class PlayerManager : MonoBehaviour {
 
     public void InstanciatePlayer(GameObject spawner)
     {
-        GameObject instance = Instantiate(prefab) as GameObject;
+        if (prefab.Count <= 0)
+            return;
+
+        GameObject instance = Instantiate(prefab[playerList.Count]) as GameObject;
         instance.GetComponent<PlayerScript>().SetId(playerList.Count + 1);
         instance.transform.position = spawner.transform.position;
         instance.transform.position = new Vector3(0, 0, -2) + instance.transform.position;

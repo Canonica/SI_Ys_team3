@@ -24,7 +24,25 @@ public class InputManager : MonoBehaviour {
 
         if (Input.GetMouseButton(0))
         {
-            //Debug.Log("Clic gauche");
+
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 1000.0f))
+            {
+                PlayerScript pl = PlayerManager.instance.playerList[TurnManager.instance.currentPlayer - 1];
+                GameObject other = hit.transform.gameObject;
+
+                if (other.CompareTag("Creature") && other.name != pl.gameObject.name)
+                {
+                    pl.creatureAtt.OnAttack(other.GetComponent<Creature>());
+                }
+
+            }
         }
 
         if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W))

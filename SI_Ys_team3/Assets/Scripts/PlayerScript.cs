@@ -9,9 +9,14 @@ public class PlayerScript : MonoBehaviour {
     public int x;
     public int y;
 
+    public CreatureAttack creatureAtt;
+    public Creature creature;
+
     // Use this for initialization
-    void Start () {
-        
+    void Start()
+    {
+        creatureAtt = GetComponent<CreatureAttack>();
+        creature = GetComponent<Creature>();
         PlayerManager.instance.addPlayer(this);
     }
 	

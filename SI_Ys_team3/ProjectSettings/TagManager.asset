@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - SpawnJ1
   - SpawnJ2
+  - Creature
   layers:
   - Default
   - TransparentFX
