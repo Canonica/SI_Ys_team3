@@ -5,6 +5,13 @@ public class TouchDetector : MonoBehaviour {
 
     public GameObject button_play;
 
+    public GameObject button_player2;
+    public GameObject button_pause_main;
+    public GameObject button_pause_resume;
+    public GameObject button_pause_restart;
+    public GameObject button_pause_quit;
+
+
     private int startCount = 0;
 	// Use this for initialization
 	void Start () {
@@ -12,6 +19,10 @@ public class TouchDetector : MonoBehaviour {
 	}
 	
 
+    void Update()
+    {
+       
+    }
 
     public void DestroyButton(GameObject gameobject)
     {
@@ -26,9 +37,7 @@ public class TouchDetector : MonoBehaviour {
 
         if(startCount == 2)
         {
-            button_play = Instantiate(button_play, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            button_play.transform.parent = GameObject.Find("Canvas").transform;
-            button_play.transform.localScale =  new Vector3(1, 1, 1);            
+            button_play.SetActive(true);
         }
         Destroy(gameobject);
     }
@@ -37,4 +46,11 @@ public class TouchDetector : MonoBehaviour {
     {
         GameManager.instance.gamestate = GameManager.GameState.playing;
     }
+
+    public void ActivateButton2()
+    {
+        button_player2.SetActive(true);
+    }
+
+    
 }

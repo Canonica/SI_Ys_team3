@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
@@ -24,4 +23,9 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         Debug.Log(gamestate);
 	}
+
+    public void Start_Game()
+    {
+        PlayerManager.instance.playerList[TurnManager.instance.currentPlayer-1].GetComponent<DragDrop>().canMove = true;
+    }
 }

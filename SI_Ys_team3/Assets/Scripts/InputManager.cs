@@ -8,7 +8,6 @@ public class InputManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization

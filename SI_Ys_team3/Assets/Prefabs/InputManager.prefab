@@ -10,6 +10,7 @@ GameObject:
   - 224: {fileID: 22418058}
   - 114: {fileID: 11469986}
   - 114: {fileID: 11421262}
+  - 114: {fileID: 11491834}
   m_Layer: 5
   m_Name: InputManager
   m_TagString: Untagged
@@ -28,7 +29,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e1c990a24e2954f921fd77b7b8d978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button_play: {fileID: 140914, guid: 018b18e82a6597b4fa0735d21edeb6ae, type: 2}
+  button_play: {fileID: 0}
+  button_player2: {fileID: 0}
+  button_pause_main: {fileID: 0}
+  button_pause_resume: {fileID: 0}
+  button_pause_restart: {fileID: 0}
+  button_pause_quit: {fileID: 0}
 --- !u!114 &11469986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,6 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ca516c06b674f45899bdeef07d6cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11491834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df27750100da304fae267689ed5a839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 0
 --- !u!224 &22418058
 RectTransform:
   m_ObjectHideFlags: 1

@@ -9,7 +9,6 @@ public class MapManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
 
@@ -51,6 +50,11 @@ public class MapManager : MonoBehaviour {
         }
         
 	}
+
+    public void Play()
+    {
+        Start();
+    }
 	
 	// Update is called once per frame
 	void Update () {

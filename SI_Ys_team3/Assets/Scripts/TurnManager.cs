@@ -9,10 +9,11 @@ public class TurnManager : MonoBehaviour {
     public List<int> playerIdList;
     public int currentPlayer;
 
+    public int nbObTurns = 1;
+
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
@@ -28,13 +29,17 @@ public class TurnManager : MonoBehaviour {
 
     public void EndTurn()
     {
+        PlayerManager.instance.playerList[currentPlayer - 1].GetComponent<DragDrop>().canMove = false;
         if (currentPlayer == 2)
         {
             currentPlayer = 1;
+            nbObTurns++;
+            
         }
         else if (currentPlayer == 1)
         {
             currentPlayer = 2;
         }
+        PlayerManager.instance.playerList[currentPlayer-1].GetComponent<DragDrop>().canMove = true;
     }
 }

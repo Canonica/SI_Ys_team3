@@ -10,7 +10,6 @@ public class PlayerManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public List<PlayerScript> playerList;
@@ -38,6 +37,21 @@ public class PlayerManager : MonoBehaviour {
         instance.GetComponent<PlayerScript>().SetId(playerList.Count + 1);
         instance.transform.position = spawner.transform.position;
         instance.transform.position = new Vector3(0, 0, -2) + instance.transform.position;
+        instance.name = "Player" + playerList.Count;
         TurnManager.instance.playerIdList.Add(playerList.Count + 1);
+
+        RaycastHit hit;
+        if (Physics.Raycast(instance.transform.position, Vector3.forward, out hit, 100.0f))
+        {
+            if (hit.transform.gameObject.CompareTag("Cell"))
+            {
+                hit.transform.gameObject.GetComponent<Cell>().isOccupied = true;
+            }
+            else
+            {
+                Debug.Log("Pas de cell");
+            }
+
+        }
     }
 }

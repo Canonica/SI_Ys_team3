@@ -4,10 +4,10 @@ using System.Collections;
 public class Creature : MonoBehaviour {
 
     public int maxHealth = 15;
-    private int currentHealth;
+    public int currentHealth;
 
     public int maxMovementPoint = 3;
-    private int currentMovementPoint;
+    public int currentMovementPoint;
 
 
     public int autoRange = 1;
@@ -28,7 +28,7 @@ public class Creature : MonoBehaviour {
 
         if(currentMovementPoint <= 0)
         {
-            Debug.Log("stop move");
+           GetComponent<DragDrop>().canMove = false;
         }
 	}
 }
