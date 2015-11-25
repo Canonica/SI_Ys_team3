@@ -28,7 +28,6 @@ public class TurnManager : MonoBehaviour {
 
     public void EndTurn()
     {
-        //currentPlayer = currentPlayer % playerIdList.Count;
         if (currentPlayer == 2)
         {
             currentPlayer = 1;
