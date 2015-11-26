@@ -41,16 +41,26 @@ public class InputManager : MonoBehaviour
 
                 if (pl.GetComponent<DragDrop>().canMove)
                 {
-                    if (!pl.creatureActif.readyAbility && !pl.creatureAtt.readyAttack && !pl.creature.readyOrientation  && other.CompareTag("Cell"))
+                    if (!pl.creatureActif.readyAbility && !pl.creatureAtt.readyAttack && !pl.creature.readyOrientation && other.CompareTag("Cell"))
                     {
                         if (Vector3.Distance(pl.transform.position, other.transform.position + new Vector3(0, 0, -2)) == MapManager.instance.cellSize && pl.creature.currentMovementPoint > 0)
                         {
                             if (Physics.Raycast(pl.transform.position, other.transform.position + new Vector3(0, 0, -2) - pl.transform.position, out hit, MapManager.instance.cellSize))
                             {
-                                Debug.Log(hit.transform.tag);
+                                //Debug.Log(hit.transform.tag);
                             }
                             else
                             {
+                                Physics.Raycast(pl.transform.position, Vector3.forward, out hit, 1000.0f);
+                                other.GetComponent<Cell>().isOccupied = true;
+                                if(hit.transform && hit.transform.CompareTag("Cell"))
+                                {
+                                    hit.transform.GetComponent<Cell>().isOccupied = false;
+                                }
+                                else
+                                {
+                                    Debug.Log("pas cell");
+                                }
                                 pl.transform.position = other.transform.position;
                                 pl.transform.position = new Vector3(0, 0, -2) + pl.transform.position;
                                 pl.creature.currentMovementPoint--;
@@ -95,15 +105,7 @@ public class InputManager : MonoBehaviour
                         {
                             pl.creatureActif.UnReadyAbility();
                         }
-                        else
-                        {
-                            //MenuManager.instance.Toggle_QuickMenu(other.transform.position);
-                        }
                     }
-                }
-                else if (other.CompareTag("Creature") && other.name == pl.gameObject.name)
-                {
-                    //MenuManager.instance.Toggle_QuickMenu(pl.transform.position);
                 }
 
                 if (pl.creature.readyOrientation && other.CompareTag("Cell"))

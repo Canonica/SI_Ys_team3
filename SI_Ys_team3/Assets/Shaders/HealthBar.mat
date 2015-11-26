@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: HealthBar
+  m_Shader: {fileID: 4800000, guid: 724fad12d294485468f1598038a6957a, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs: {}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .5
+      data:
+        first:
+          name: _Health
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _Full_Life
+        second: {r: .150735289, g: .602941155, b: .209989905, a: 1}
+      data:
+        first:
+          name: _No_Life
+        second: {r: 1, g: 0, b: 0, a: 1}

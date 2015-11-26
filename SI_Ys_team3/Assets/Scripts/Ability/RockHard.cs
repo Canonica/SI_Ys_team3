@@ -4,6 +4,8 @@ using System.Collections;
 public class RockHard : PassiveAbility
 {
 
+    public static int BOOSTARMORFROMRANGE = 1;
+
 	// Use this for initialization
 	void Start () {
 
@@ -13,6 +15,11 @@ public class RockHard : PassiveAbility
 
     override public void ApplyAbility()
     {
-        
+        crea.defense += BOOSTARMORFROMRANGE;
+    }
+
+    override public void UnApplyAbility()
+    {
+        crea.defense -= BOOSTARMORFROMRANGE;
     }
 }

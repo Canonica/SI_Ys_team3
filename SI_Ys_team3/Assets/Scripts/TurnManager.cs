@@ -10,6 +10,8 @@ public class TurnManager : MonoBehaviour {
     public int currentPlayer;
 
     public int nbObTurns = 1;
+    public BonusBehavior bonus1;
+    public BonusBehavior bonus2;
 
     void Awake()
     {
@@ -35,7 +37,6 @@ public class TurnManager : MonoBehaviour {
         }
         else
         {
-            Debug.Log("stunning venom");
             PlayerManager.instance.playerList[currentPlayer - 1].creatureActif.ReadyAbility();
         }
 
@@ -79,6 +80,9 @@ public class TurnManager : MonoBehaviour {
             MenuManager.instance.canvasQuickMenuP1.SetActive(false);
             MenuManager.instance.canvasQuickMenuP2.SetActive(true);
         }
+
+        bonus1.IncreaseTurn();
+        bonus2.IncreaseTurn();
         PlayerManager.instance.playerList[currentPlayer-1].GetComponent<DragDrop>().canMove = true;
     }
 }

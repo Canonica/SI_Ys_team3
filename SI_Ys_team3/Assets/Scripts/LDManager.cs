@@ -34,20 +34,24 @@ public class LDManager : MonoBehaviour {
 		if (nbTurnsSinceLastChange == 3)
 		{
 			isLevel1 = !isLevel1;
-			nbTurnsSinceLastChange = 0;
+            if (MenuManager.instance.startGame)
+            {
+                if (isLevel1)
+                {
+                    level2.SetActive(false);
+                    level1.SetActive(true);
+                    MapManager.instance.Play();
+                }
+                else
+                {
+                    level1.SetActive(false);
+                    level2.SetActive(true);
+                    MapManager.instance.Play();
+                }
+            }
+            nbTurnsSinceLastChange = 0;
 		}
 
-		if (MenuManager.instance.startGame)
-		{
-			if (isLevel1) {
-                level2.SetActive(false);
-                level1.SetActive (true);
-                MapManager.instance.Play();
-            } else {
-				level1.SetActive (false);
-				level2.SetActive (true);
-                MapManager.instance.Play();
-            }
-		}
+		
 	}
 }

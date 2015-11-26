@@ -32,6 +32,7 @@ public class BonusManager : MonoBehaviour {
 	public void TakeBonus()
 	{
 		player.GetComponent<Creature>().currentMovementPoint = 0;
+		BonusBehavior myBonusBehavior = currentBonus.GetComponent<BonusBehavior>();
 		switch (currentBonus.name)
 		{
 			case "BonusDamages":
@@ -42,8 +43,9 @@ public class BonusManager : MonoBehaviour {
 				IncreaseHealth();
 			break;
 		}
-        currentBonus.GetComponent<BonusBehavior>().HidePickUp(player.name);
-        Destroy(currentBonus);
+		myBonusBehavior.HidePickUp(player.name);
+		myBonusBehavior.HideBonus ();
+		myBonusBehavior.isTaken = true;
 
 	}
 

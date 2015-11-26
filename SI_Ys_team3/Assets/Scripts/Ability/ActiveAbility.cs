@@ -30,5 +30,6 @@ public class ActiveAbility : MonoBehaviour {
     public virtual void UseAbility()
     {
         Debug.Log("Active Ability : " + name);
+        crea.hasAttacked = true;
     }
 }

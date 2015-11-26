@@ -27,6 +27,8 @@ public class MenuManager : MonoBehaviour {
     public GameObject winnerText;
 
     public bool startGame;
+    public GameObject bonus1;
+    public GameObject bonus2;
 
     void Awake()
     {
@@ -43,8 +45,10 @@ public class MenuManager : MonoBehaviour {
         map2.SetActive(false);
         canvasPause.SetActive(false);
         canvasCredits.SetActive(false);
-        canvasMain.GetComponent<CanvasGroup>().alpha = 0.5f;
+        //canvasMain.GetComponent<CanvasGroup>().alpha = 0.5f;
         Time.timeScale = 0;
+
+        
 
     }
 
@@ -59,6 +63,8 @@ public class MenuManager : MonoBehaviour {
         map.SetActive(true);
         canvasMain.SetActive(false);
         canvasPause.SetActive(false);
+        bonus1.SetActive(true);
+        bonus2.SetActive(true);
         startGame = true;
 
         Time.timeScale = 1;

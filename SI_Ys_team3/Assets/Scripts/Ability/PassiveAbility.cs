@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PassiveAbility : MonoBehaviour {
 
@@ -15,7 +16,11 @@ public class PassiveAbility : MonoBehaviour {
 
     public virtual void ApplyAbility()
     {
-        Debug.Log("Passive Ability : " + name);
+
     }
-    
+
+    public virtual void UnApplyAbility()
+    {
+
+    }
 }

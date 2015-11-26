@@ -47,10 +47,6 @@ public class PlayerManager : MonoBehaviour {
             {
                 hit.transform.gameObject.GetComponent<Cell>().isOccupied = true;
             }
-            else
-            {
-                Debug.Log("Pas de cell");
-            }
 
         }
         if(playerList.Count == 0)

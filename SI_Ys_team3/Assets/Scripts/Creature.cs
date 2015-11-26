@@ -24,6 +24,8 @@ public class Creature : MonoBehaviour {
 
     public bool readyOrientation = false;
 
+    public GameObject healthbar;
+
     // Use this for initialization
     void Start()
     {
@@ -43,15 +45,26 @@ public class Creature : MonoBehaviour {
         textMove.text = currentMovementPoint.ToString();
     }
 
-    public void Hit(int damage)
+    public void Hit(int damage, bool ranged)
     {
-        if(damage != 0)
+        if (ranged)
+        {
+            player.creaturePassif.ApplyAbility();
+        }
+        if (damage != 0)
         {
             currentHealth -= damage * 1 / defense;
+            Debug.Log(currentHealth / maxHealth);
+            Debug.Log(healthbar.GetComponent<Renderer>().material.GetFloat("_Health"));
+            healthbar.GetComponent<Renderer>().material.SetFloat("_Health", (float)currentHealth / (float)maxHealth);
         }
         if (currentHealth <= 0)
         {
             MenuManager.instance.Menu_End(gameObject.name);
+        }
+        if (ranged)
+        {
+            player.creaturePassif.UnApplyAbility();
         }
     }
 

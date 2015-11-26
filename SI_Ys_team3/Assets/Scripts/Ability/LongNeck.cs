@@ -4,6 +4,8 @@ using System.Collections;
 public class LongNeck : PassiveAbility
 {
 
+    public bool canAttackThroughWall = true;
+
 	// Use this for initialization
 	void Start () {
 
@@ -13,6 +15,11 @@ public class LongNeck : PassiveAbility
 
     override public void ApplyAbility()
     {
-        
+        crea.damage--;
+    }
+
+    override public void UnApplyAbility()
+    {
+        crea.damage++;
     }
 }

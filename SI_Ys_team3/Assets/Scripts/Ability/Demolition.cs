@@ -19,12 +19,9 @@ public class Demolition : ActiveAbility
 
     override public void UseAbility()
     {
-        Debug.Log("lol");
         RaycastHit[] hits = Physics.RaycastAll(transform.position, crea.orientation, MapManager.instance.cellSize);
-        Debug.Log("XD");
         if (hits.Length > 0 && crea.currentMovementPoint > 0)
         {
-            Debug.Log("PTDR");
             bool walls = false;
             foreach(RaycastHit hit in hits)
             {
@@ -36,7 +33,6 @@ public class Demolition : ActiveAbility
             if (!walls)
                 return;
 
-            Debug.Log("HOLALA");
             foreach (RaycastHit hit in hits)
             {
                 if (hit.transform.CompareTag("Wall"))
@@ -45,16 +41,16 @@ public class Demolition : ActiveAbility
                 }
                 else if(hit.transform.CompareTag("Creature") && name != hit.transform.name)
                 {
-                    hit.transform.gameObject.GetComponent<Creature>().Hit(DAMAGEDONE);
+                    hit.transform.gameObject.GetComponent<Creature>().Hit(DAMAGEDONE, false);
                 }
             }
 
-            Debug.Log("YUP");
-            crea.Hit(DAMAGETAKEN);
+            crea.Hit(DAMAGETAKEN, false);
             crea.currentMovementPoint--;
-
+            TurnManager.instance.EndTurn();
+            base.UseAbility();
         }
 
-        TurnManager.instance.EndTurn();
+        
     }
 }

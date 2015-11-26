@@ -182,7 +182,7 @@ public class MapManager : MonoBehaviour
         {
             cellSize = GameObject.Find("Grid2").transform.lossyScale.x;
         }
-        
+
     }
 
     // Update is called once per frame

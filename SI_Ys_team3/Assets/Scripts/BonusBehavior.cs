@@ -10,11 +10,18 @@ public class BonusBehavior : MonoBehaviour {
     public GameObject buttonEnd2;
 
 	public bool isTaken;
+	public int nbTurnsSinceTaken;
 
     void Start()
     {
-        Debug.Log(buttonPlayer1.name);
-        Debug.Log(buttonPlayer2.name);
+		nbTurnsSinceTaken = 0;
+		if (gameObject.name == "BonusDamages")
+		{
+			TurnManager.instance.bonus1 = this;
+		} else
+		{
+			TurnManager.instance.bonus2 = this;
+		}
     }
 
 
@@ -65,10 +72,165 @@ public class BonusBehavior : MonoBehaviour {
         }
         else
         {
-            buttonPlayer1.SetActive(false);
+            buttonPlayer2.SetActive(false);
             buttonEnd2.SetActive(true);
         }
     }
+
+	public void HideBonus()
+	{
+		transform.GetComponent<Renderer> ().enabled = false;
+		transform.GetComponent<Collider> ().enabled = false;
+	}
+
+	public void IncreaseTurn()
+	{
+		if (isTaken)
+		{
+			nbTurnsSinceTaken++;
+		}
+		if (nbTurnsSinceTaken == 5)
+		{
+			DisplayBonus();
+			nbTurnsSinceTaken = 0;
+		}
+	}
+
+
+	public void DisplayBonus()
+	{
+		RaycastHit hit;
+		Ray ray;
+
+		switch (gameObject.name) {
+		
+		case "BonusDamages" :
+			transform.position = transform.parent.transform.parent.position;
+			Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+			if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+			{
+				Debug.Log(hit.transform.GetComponent<Cell>().isOccupied);
+				gameObject.name = "BonusMovement";
+				break;
+			}
+			else
+			{
+				transform.position = transform.parent.transform.parent.transform.parent.position;
+				Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+				if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+				{
+					Debug.Log("Deuxième position");
+					gameObject.name = "BonusMovement";
+					break;
+				}
+				else
+				{
+					Debug.Log("Troisième position");
+					transform.position = transform.parent.position;
+					gameObject.name = "BonusMovement";
+					break;
+				}
+			}
+		
+
+		case "BonusMovement":
+			transform.position = transform.parent.position;
+			Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+			if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+			{
+				Debug.Log(hit.transform.GetComponent<Cell>().isOccupied);
+				gameObject.name = "BonusDamages";
+				break;
+			}
+			else
+			{
+				transform.position = transform.parent.transform.parent.transform.parent.position;
+				Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+				if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+				{
+					Debug.Log("Deuxième position");
+					gameObject.name = "BonusDamages";
+					break;
+				}
+				else
+				{
+					Debug.Log("Troisième position");
+					transform.position = transform.parent.transform.parent.position;
+					gameObject.name = "BonusDamages";
+					break;
+				}
+			}
+
+
+
+		case "BonusHealth":
+			transform.position = transform.parent.transform.parent.position;
+			Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+			if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+			{
+				Debug.Log(hit.transform.GetComponent<Cell>().isOccupied);
+				gameObject.name = "BonusDistance";
+				break;
+			}
+			else
+			{
+				transform.position = transform.parent.transform.parent.transform.parent.position;
+				Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+				if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+				{
+					Debug.Log("Deuxième position");
+					gameObject.name = "BonusDistance";
+					break;
+				}
+				else
+				{
+					Debug.Log("Troisième position");
+					transform.position = transform.parent.position;
+					gameObject.name = "BonusDistance";
+					break;
+				}
+			}
+
+
+		case "BonusDistance":
+			transform.position = transform.parent.position;
+			Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+			if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+			{
+				Debug.Log(hit.transform.GetComponent<Cell>().isOccupied);
+				gameObject.name = "BonusHealth";
+				break;
+			}
+			else
+			{
+				transform.position = transform.parent.transform.parent.transform.parent.position;
+				Physics.Raycast (transform.position, Vector3.forward, out hit, 1000f);
+				if(hit.transform.name.Contains("Cell") && hit.transform.GetComponent<Cell>().isOccupied == false)
+				{
+					Debug.Log("Deuxième position");
+					gameObject.name = "BonusHealth";
+					break;
+				}
+				else
+				{
+					Debug.Log("Troisième position");
+					transform.position = transform.parent.transform.parent.position;
+					gameObject.name = "BonusHealth";
+					break;
+				}
+			}
+		
+		
+		}
+
+
+
+
+		transform.GetComponent<Renderer> ().enabled = true;
+		transform.GetComponent<Collider> ().enabled = true;
+
+		isTaken = false;
+	}
 
 
 

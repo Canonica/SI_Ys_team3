@@ -63,6 +63,7 @@ public class StunningVenom : ActiveAbility
 
     override public void UseAbility()
     {
+        base.UseAbility();
         UnReadyAbility();
     }
 }
