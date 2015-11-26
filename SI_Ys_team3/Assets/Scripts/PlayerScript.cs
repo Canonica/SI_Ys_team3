@@ -6,10 +6,13 @@ public class PlayerScript : MonoBehaviour {
     public int id;
     public int actionPoint = 4;
 
+    public Creature creature;
+    public CreatureAttack creatureAtt;
 
     // Use this for initialization
     void Start () {
-        
+        creature = GetComponent<Creature>();
+        creatureAtt = GetComponent<CreatureAttack>();
         PlayerManager.instance.addPlayer(this);
     }
 	

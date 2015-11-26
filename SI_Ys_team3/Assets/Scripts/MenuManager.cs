@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MenuManager : MonoBehaviour {
 
@@ -8,8 +9,11 @@ public class MenuManager : MonoBehaviour {
     public GameObject canvasPlay;
     public GameObject canvasMain;
     public GameObject canvasCredits;
+
     public GameObject canvasPause;
     public GameObject canvasPause2;
+    
+    public GameObject canvasQuickMenu;
 
     public GameObject map;
 
@@ -21,7 +25,7 @@ public class MenuManager : MonoBehaviour {
     void Start () {
         GameManager.instance.gamestate = GameManager.GameState.menu;
         canvasPlay.SetActive(false);
-        GameObject.Find("Grid").SetActive(false);
+        map.SetActive(false);
         canvasPause.SetActive(false);
         canvasCredits.SetActive(false);
         canvasMain.SetActive(true);
@@ -57,6 +61,17 @@ public class MenuManager : MonoBehaviour {
     public void Menu_Back()
     {
         Application.LoadLevel("map");
+    }
+
+    public void Toggle_QuickMenu()
+    {
+        Toggle_QuickMenu(Vector3.zero);
+    }
+
+    public void Toggle_QuickMenu(Vector3 posPlayer)
+    {
+        canvasQuickMenu.transform.position = posPlayer;
+        canvasQuickMenu.SetActive(!canvasQuickMenu.activeInHierarchy);
     }
 
     public void Menu_Back_Credits()

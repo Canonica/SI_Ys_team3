@@ -8,6 +8,12 @@ public class DragDrop : MonoBehaviour {
     float posY;
     public bool canMove = false;
 
+    void Update()
+    {
+        Debug.Log(canMove);
+    }
+
+    /*
     List<GameObject> arrayCell;
 
     Vector3 posObj;
@@ -108,5 +114,5 @@ public class DragDrop : MonoBehaviour {
                 }
             }
         }
-    }
+    }*/
 }

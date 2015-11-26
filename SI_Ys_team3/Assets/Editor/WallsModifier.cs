@@ -15,7 +15,7 @@ public class WallsModifier : EditorWindow {
 
     void OnGUI()
     {
-        if(Selection.gameObjects.Length == 1 && Selection.gameObjects[0].name == "Cell")
+        if(Selection.gameObjects.Length == 1 && Selection.gameObjects[0].tag == "Cell")
         {
             GameObject go = Selection.gameObjects[0];
 

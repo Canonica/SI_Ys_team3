@@ -27,9 +27,21 @@ public class TurnManager : MonoBehaviour {
 	
 	}
 
+    public void ReadyAttack()
+    {
+        PlayerManager.instance.playerList[currentPlayer - 1].creatureAtt.ReadyAttack();
+    }
+
+    public void ChooseOrientation()
+    {
+        PlayerManager.instance.playerList[currentPlayer - 1].creature.ReadyOrientation();
+    }
+
     public void EndTurn()
     {
         PlayerManager.instance.playerList[currentPlayer - 1].GetComponent<DragDrop>().canMove = false;
+        PlayerManager.instance.playerList[currentPlayer - 1].creature.currentMovementPoint = PlayerManager.instance.playerList[currentPlayer - 1].creature.maxMovementPoint;
+        PlayerManager.instance.playerList[currentPlayer - 1].creature.hasAttacked = false;
         if (currentPlayer == 2)
         {
             currentPlayer = 1;

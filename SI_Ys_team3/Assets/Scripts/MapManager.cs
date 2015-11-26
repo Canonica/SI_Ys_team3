@@ -15,6 +15,8 @@ public class MapManager : MonoBehaviour {
     public int width = 3;
     public int height = 4;
 
+    public float cellSize = 1.5f;
+
     public GameObject prefab;
     public List<GameObject> map;
 
@@ -27,6 +29,8 @@ public class MapManager : MonoBehaviour {
 
         /*float startPos = 0.2f;
         float endPos = 0.8f;*/
+
+        
 
         GameObject go = GameObject.Find("Cells");
 
@@ -43,6 +47,7 @@ public class MapManager : MonoBehaviour {
                     cell.AddComponent<Cell>();
                     cell.GetComponent<Cell>().x = i;
                     cell.GetComponent<Cell>().y = j;
+                    cell.GetComponent<Renderer>().material.color = Color.yellow;
                     map.Add(cell);
 
                 }
@@ -51,9 +56,113 @@ public class MapManager : MonoBehaviour {
         
 	}
 
+
+    public void ColorAdjCell(Cell cell)
+    {
+        GameObject up;
+        GameObject down;
+        GameObject left;
+        GameObject right;
+
+        if(cell.x * height + cell.y + height < map.Count)
+        {
+            right = map[cell.x * height + cell.y + height];
+            right.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        if (cell.x * height + cell.y - height >= 0)
+        {
+            left = map[cell.x * height + cell.y - height];
+            left.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        if (cell.x * height + cell.y - 1 > 0 && cell.y-1 > 0)
+        {
+            up = map[cell.x * height + cell.y - 1];
+            up.GetComponent<Renderer>().material.color = Color.blue;
+        }
+        if (cell.x * height + cell.y + 1 < map.Count && (cell.y+1) < height )
+        {
+            down = map[cell.x * height + cell.y + 1];
+            down.GetComponent<Renderer>().material.color = Color.blue;
+        }
+    }
+
+    public void UnColorAdjCell(Cell cell)
+    {
+        GameObject up;
+        GameObject down;
+        GameObject left;
+        GameObject right;
+
+        if (cell.x * height + cell.y + height < map.Count)
+        {
+            right = map[cell.x * height + cell.y + height];
+            right.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        if (cell.x * height + cell.y - height >= 0)
+        {
+            left = map[cell.x * height + cell.y - height];
+            left.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        if (cell.x * height + cell.y - 1 >= 0)
+        {
+            up = map[cell.x * height + cell.y - 1];
+            up.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        if (cell.x * height + cell.y + 1 < map.Count)
+        {
+            down = map[cell.x * height + cell.y + 1];
+            down.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+    }
+
+    public void ColorFrontCell(Cell cell, Vector3 direction)
+    {
+        switch(Mathf.RoundToInt(direction.x))
+        {
+            case -1:
+                map[cell.x * height + cell.y - height].GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            case 1:
+                map[cell.x * height + cell.y + height].GetComponent<Renderer>().material.color = Color.blue;
+                break;
+        }
+        switch (Mathf.RoundToInt(direction.y))
+        {
+            case -1:
+                map[cell.x * height + cell.y + 1].GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            case 1:
+                map[cell.x * height + cell.y - 1].GetComponent<Renderer>().material.color = Color.blue;
+                break;
+        }
+    }
+
+    public void UnColorFrontCell(Cell cell, Vector3 direction)
+    {
+        switch (Mathf.RoundToInt(direction.x))
+        {
+            case -1:
+                map[cell.x * height + cell.y - height].GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+            case 1:
+                map[cell.x * height + cell.y + height].GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+        }
+        switch (Mathf.RoundToInt(direction.y))
+        {
+            case -1:
+                map[cell.x * height + cell.y + 1].GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+            case 1:
+                map[cell.x * height + cell.y - 1].GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+        }
+    }
+
     public void Play()
     {
         Start();
+        cellSize = GameObject.Find("Grid").transform.lossyScale.x;
     }
 	
 	// Update is called once per frame
