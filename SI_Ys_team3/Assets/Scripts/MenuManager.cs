@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 using System;
 
 public class MenuManager : MonoBehaviour {
@@ -16,19 +17,33 @@ public class MenuManager : MonoBehaviour {
     public GameObject canvasQuickMenu;
 
     public GameObject map;
+    public GameObject map2;
+
+    public GameObject canvasQuickMenuP1;
+    public GameObject canvasQuickMenuP2;
+
+    public GameObject canvasEndGame;
+
+    public GameObject winnerText;
+
+    public bool startGame;
 
     void Awake()
     {
         instance = this;
     }
+
+
+
     // Use this for initialization
     void Start () {
         GameManager.instance.gamestate = GameManager.GameState.menu;
         canvasPlay.SetActive(false);
         map.SetActive(false);
+        map2.SetActive(false);
         canvasPause.SetActive(false);
         canvasCredits.SetActive(false);
-        canvasMain.SetActive(true);
+        canvasMain.GetComponent<CanvasGroup>().alpha = 0.5f;
         Time.timeScale = 0;
 
     }
@@ -44,6 +59,8 @@ public class MenuManager : MonoBehaviour {
         map.SetActive(true);
         canvasMain.SetActive(false);
         canvasPause.SetActive(false);
+        startGame = true;
+
         Time.timeScale = 1;
     }
 
@@ -65,14 +82,9 @@ public class MenuManager : MonoBehaviour {
 
     public void Toggle_QuickMenu()
     {
-        Toggle_QuickMenu(Vector3.zero);
+       
     }
 
-    public void Toggle_QuickMenu(Vector3 posPlayer)
-    {
-        canvasQuickMenu.transform.position = posPlayer;
-        canvasQuickMenu.SetActive(!canvasQuickMenu.activeInHierarchy);
-    }
 
     public void Menu_Back_Credits()
     {
@@ -84,6 +96,26 @@ public class MenuManager : MonoBehaviour {
     {
         canvasPause2.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void Menu_Resume()
+    {
+        canvasPause.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void Menu_End(string player)
+    {
+        Time.timeScale = 0;
+
+        canvasEndGame.SetActive(true);
+        if (player == "Player0")
+        {
+            winnerText.GetComponent<Text>().text = "The Rhinoceros \n won !";
+        }else if(player == "Player1")
+        {
+            winnerText.GetComponent<Text>().text = "The Snake \n won !";
+        }
     }
 
 }

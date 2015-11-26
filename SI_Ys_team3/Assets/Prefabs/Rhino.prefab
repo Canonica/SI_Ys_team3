@@ -30,6 +30,8 @@ GameObject:
   - 114: {fileID: 11453862}
   - 222: {fileID: 22294892}
   - 65: {fileID: 6557306}
+  - 114: {fileID: 11472154}
+  - 114: {fileID: 11465342}
   m_Layer: 0
   m_Name: Rhino
   m_TagString: Creature
@@ -180,6 +182,8 @@ MonoBehaviour:
   actionPoint: 4
   creature: {fileID: 0}
   creatureAtt: {fileID: 0}
+  creatureActif: {fileID: 0}
+  creaturePassif: {fileID: 0}
 --- !u!114 &11431090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +206,7 @@ MonoBehaviour:
   player: {fileID: 0}
   creatureAtt: {fileID: 0}
   textMove: {fileID: 0}
-  orientation: {x: 0, y: 0, z: 0}
+  orientation: {x: 0, y: -1, z: 0}
   readyOrientation: 0
 --- !u!114 &11453862
 MonoBehaviour:
@@ -216,6 +220,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+--- !u!114 &11465342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860e80293d8fb3c4ea6acac60b266daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crea: {fileID: 0}
+  creatt: {fileID: 0}
+  readyAbility: 0
+  useAbility: 0
+--- !u!114 &11472154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0130c511e7a6ea746b6268ae3ccf5eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crea: {fileID: 0}
+  creatt: {fileID: 0}
 --- !u!212 &21285298
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -305,6 +337,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: -1.62920685e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: orientation.y
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

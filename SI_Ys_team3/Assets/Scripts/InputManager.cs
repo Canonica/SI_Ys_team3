@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputManager : MonoBehaviour {
+public class InputManager : MonoBehaviour
+{
 
     public static InputManager instance = null;
 
@@ -11,12 +12,13 @@ public class InputManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-	    
-        
+    void Start()
+    {
 
 
-	}
+
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,7 +41,7 @@ public class InputManager : MonoBehaviour {
 
                 if (pl.GetComponent<DragDrop>().canMove)
                 {
-                    if (!pl.creatureAtt.readyAttack && !pl.creature.readyOrientation && !MenuManager.instance.canvasQuickMenu.activeInHierarchy && other.CompareTag("Cell"))
+                    if (!pl.creatureActif.readyAbility && !pl.creatureAtt.readyAttack && !pl.creature.readyOrientation  && other.CompareTag("Cell"))
                     {
                         if (Vector3.Distance(pl.transform.position, other.transform.position + new Vector3(0, 0, -2)) == MapManager.instance.cellSize && pl.creature.currentMovementPoint > 0)
                         {
@@ -49,7 +51,6 @@ public class InputManager : MonoBehaviour {
                             }
                             else
                             {
-                                Debug.Log(Vector3.Distance(pl.transform.position, other.transform.position));
                                 pl.transform.position = other.transform.position;
                                 pl.transform.position = new Vector3(0, 0, -2) + pl.transform.position;
                                 pl.creature.currentMovementPoint--;
@@ -60,16 +61,19 @@ public class InputManager : MonoBehaviour {
 
                     }
                 }
-                if(!pl.GetComponent<Creature>().hasAttacked)
+                if (!pl.GetComponent<Creature>().hasAttacked)
                 {
-                    Physics.Raycast(pl.transform.position, pl.creature.orientation, out hit, MapManager.instance.cellSize);
-                    /*if (other.CompareTag("Creature") && other.name != pl.gameObject.name)
+                    Physics.Raycast(pl.transform.position + pl.creature.orientation * MapManager.instance.cellSize, Vector3.forward, out hit, 1000.0f);
+                    if (other.CompareTag("Creature") && other.name != pl.gameObject.name)
                     {
-                        pl.creatureAtt.OnAttack(other.GetComponent<Creature>());
-                    }*/
-                    if (hit.transform && hit.transform.CompareTag("Creature") && hit.transform.name != pl.gameObject.name)
-                    {
-                        pl.creatureAtt.OnAttack(other.GetComponent<Creature>());
+                        if (pl.creatureAtt.readyAttack)
+                        {
+                            pl.creatureAtt.OnAttack(other.GetComponent<Creature>());
+                        }
+                        else if (pl.creatureActif.readyAbility)
+                        {
+                            pl.creatureActif.UseAbility(other);
+                        }
                     }
                     else if (other.CompareTag("Creature") && other.name == pl.gameObject.name)
                     {
@@ -80,15 +84,26 @@ public class InputManager : MonoBehaviour {
                             MapManager.instance.UnColorFrontCell(hit2.transform.GetComponent<Cell>(), pl.creature.orientation);
                             pl.creatureAtt.readyAttack = false;
                         }
+                        else if (pl.creature.readyOrientation)
+                        {
+                            RaycastHit hit2;
+                            Physics.Raycast(pl.transform.position, Vector3.forward, out hit2, 1000.0f);
+                            MapManager.instance.UnColorAdjCell(hit2.transform.GetComponent<Cell>());
+                            pl.creature.readyOrientation = false;
+                        }
+                        else if (pl.creatureActif.readyAbility)
+                        {
+                            pl.creatureActif.UnReadyAbility();
+                        }
                         else
                         {
-                            MenuManager.instance.Toggle_QuickMenu(other.transform.position);
+                            //MenuManager.instance.Toggle_QuickMenu(other.transform.position);
                         }
                     }
                 }
                 else if (other.CompareTag("Creature") && other.name == pl.gameObject.name)
                 {
-                    MenuManager.instance.Toggle_QuickMenu(other.transform.position);
+                    //MenuManager.instance.Toggle_QuickMenu(pl.transform.position);
                 }
 
                 if (pl.creature.readyOrientation && other.CompareTag("Cell"))
@@ -97,9 +112,9 @@ public class InputManager : MonoBehaviour {
                     {
                         Vector3 direction = other.transform.position - pl.transform.position;
                         pl.creature.SetOrientation(direction.normalized);
-                    } 
+                    }
                 }
-                else if(pl.creature.readyOrientation && other.CompareTag("Creature") && other.name != pl.gameObject.name)
+                else if (pl.creature.readyOrientation && other.CompareTag("Creature") && other.name != pl.gameObject.name)
                 {
                     if (Vector3.Distance(pl.transform.position, other.transform.position) == MapManager.instance.cellSize)
                     {
@@ -108,23 +123,6 @@ public class InputManager : MonoBehaviour {
                     }
                 }
             }
-        }
-
-        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W))
-        {
-            Debug.Log("Z");
-        }
-        else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.A))
-        {
-            Debug.Log("Q");
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            Debug.Log("S");
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            Debug.Log("E");
         }
     }
 }

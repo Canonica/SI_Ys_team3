@@ -53,5 +53,10 @@ public class PlayerManager : MonoBehaviour {
             }
 
         }
+        if(playerList.Count == 0)
+        {
+            MenuManager.instance.canvasQuickMenuP1.SetActive(true);
+        }
+        
     }
 }

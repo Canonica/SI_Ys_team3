@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3a8181b83f2c53844861fb90e64a6dd6
+timeCreated: 1447923631
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - running01: {fileID: 8300000, guid: 3101ec9af136d2b459d59886f98c688f, type: 3}
+  - shield_hit01: {fileID: 8300000, guid: 6db6f0a053feeba418ea40968fd79a84, type: 3}
+  - sword_hit01: {fileID: 8300000, guid: 8e60627a81f81824495dac452e46f8cf, type: 3}
+  - sword_hit02: {fileID: 8300000, guid: 914762d406d6ef44e8802ee759a332f2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

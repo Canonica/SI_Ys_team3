@@ -51,8 +51,7 @@ public class Creature : MonoBehaviour {
         }
         if (currentHealth <= 0)
         {
-            
-            Debug.Log("loose");
+            MenuManager.instance.Menu_End(gameObject.name);
         }
     }
 

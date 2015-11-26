@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MapManager : MonoBehaviour {
+public class MapManager : MonoBehaviour
+{
 
     public static MapManager instance = null;
 
@@ -21,8 +22,9 @@ public class MapManager : MonoBehaviour {
     public List<GameObject> map;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         //map = new GameObject[width, height];
         map = new List<GameObject>();
@@ -30,15 +32,15 @@ public class MapManager : MonoBehaviour {
         /*float startPos = 0.2f;
         float endPos = 0.8f;*/
 
-        
+
 
         GameObject go = GameObject.Find("Cells");
 
-        if(go)
+        if (go)
         {
-            for(int i = 0; i < width; i++)
+            for (int i = 0; i < width; i++)
             {
-                for(int j = 0; j < height; j++)
+                for (int j = 0; j < height; j++)
                 {
                     /*Vector3 position = Camera.main.ViewportToWorldPoint(new Vector3( ((float) i /width)*endPos+startPos, ((float) j /height) * endPos + startPos, 0.0f)) ;
                     position.z = 0;
@@ -53,8 +55,8 @@ public class MapManager : MonoBehaviour {
                 }
             }
         }
-        
-	}
+
+    }
 
 
     public void ColorAdjCell(Cell cell)
@@ -64,7 +66,7 @@ public class MapManager : MonoBehaviour {
         GameObject left;
         GameObject right;
 
-        if(cell.x * height + cell.y + height < map.Count)
+        if (cell.x * height + cell.y + height < map.Count)
         {
             right = map[cell.x * height + cell.y + height];
             right.GetComponent<Renderer>().material.color = Color.blue;
@@ -74,12 +76,12 @@ public class MapManager : MonoBehaviour {
             left = map[cell.x * height + cell.y - height];
             left.GetComponent<Renderer>().material.color = Color.blue;
         }
-        if (cell.x * height + cell.y - 1 > 0 && cell.y-1 > 0)
+        if (cell.x * height + cell.y - 1 > 0 && cell.y - 1 > 0)
         {
             up = map[cell.x * height + cell.y - 1];
             up.GetComponent<Renderer>().material.color = Color.blue;
         }
-        if (cell.x * height + cell.y + 1 < map.Count && (cell.y+1) < height )
+        if (cell.x * height + cell.y + 1 < map.Count && (cell.y + 1) < height)
         {
             down = map[cell.x * height + cell.y + 1];
             down.GetComponent<Renderer>().material.color = Color.blue;
@@ -117,7 +119,7 @@ public class MapManager : MonoBehaviour {
 
     public void ColorFrontCell(Cell cell, Vector3 direction)
     {
-        switch(Mathf.RoundToInt(direction.x))
+        switch (Mathf.RoundToInt(direction.x))
         {
             case -1:
                 map[cell.x * height + cell.y - height].GetComponent<Renderer>().material.color = Color.blue;
@@ -159,14 +161,33 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+    public void UnColorCell(Cell cell)
+    {
+        cell.GetComponent<Renderer>().material.color = Color.yellow;
+    }
+
+    public void ColorCell(Cell cell)
+    {
+        cell.GetComponent<Renderer>().material.color = Color.blue;
+    }
+
     public void Play()
     {
         Start();
-        cellSize = GameObject.Find("Grid").transform.lossyScale.x;
+        if (GameObject.Find("Grid"))
+        {
+            cellSize = GameObject.Find("Grid").transform.lossyScale.x;
+        }
+        else if (GameObject.Find("Grid2"))
+        {
+            cellSize = GameObject.Find("Grid2").transform.lossyScale.x;
+        }
+        
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

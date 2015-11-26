@@ -14,6 +14,8 @@ GameObject:
   - 114: {fileID: 11489728}
   - 114: {fileID: 11406590}
   - 212: {fileID: 21293936}
+  - 114: {fileID: 11474464}
+  - 114: {fileID: 11411962}
   m_Layer: 0
   m_Name: Cobra
   m_TagString: Creature
@@ -134,6 +136,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+--- !u!114 &11411962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85b38d96dacf194f83dee72ce88b100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crea: {fileID: 0}
+  creatt: {fileID: 0}
+  readyAbility: 0
+  useAbility: 0
 --- !u!114 &11472460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,8 +173,21 @@ MonoBehaviour:
   player: {fileID: 0}
   creatureAtt: {fileID: 0}
   textMove: {fileID: 0}
-  orientation: {x: 0, y: 0, z: 0}
+  orientation: {x: 0, y: 1, z: 0}
   readyOrientation: 0
+--- !u!114 &11474464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d46f8c42bb52cb44a6d1297c296f185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crea: {fileID: 0}
+  creatt: {fileID: 0}
 --- !u!114 &11489728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,6 +217,8 @@ MonoBehaviour:
   actionPoint: 4
   creature: {fileID: 0}
   creatureAtt: {fileID: 0}
+  creatureActif: {fileID: 0}
+  creaturePassif: {fileID: 0}
 --- !u!212 &21293936
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -243,6 +275,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 76da5fe273508a242a25060330c3cbfd,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: orientation.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139854}

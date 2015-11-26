@@ -67,7 +67,8 @@ public class CreatureAttack : MonoBehaviour {
             other.Hit(creature.damage);
             creature.hasAttacked = true;
         }
-        
+        creature.damage = 3;
+
     }
 
     public bool CanAttack()
