@@ -46,7 +46,10 @@ public class MapManager : MonoBehaviour
                     position.z = 0;
                     map[i, j] =  Instantiate(prefab, position, Quaternion.identity) as GameObject;*/
                     GameObject cell = go.transform.GetChild(i * height + j).gameObject;
-                    cell.AddComponent<Cell>();
+                    if (!GetComponent<Cell>())
+                    {
+                        cell.AddComponent<Cell>();
+                    }
                     cell.GetComponent<Cell>().x = i;
                     cell.GetComponent<Cell>().y = j;
                     cell.GetComponent<Renderer>().material.color = Color.yellow;
